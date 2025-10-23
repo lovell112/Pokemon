@@ -316,6 +316,7 @@
             this.Controls.Add(this.PanelPokemon);
             this.Controls.Add(this.PanelTop);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
