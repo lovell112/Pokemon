@@ -8,21 +8,44 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PokemonProject.Models;
 
 namespace PokemonProject.Forms
 {
     public partial class PickPokemonForm : Form
     {
+        private Pokemon[] _pokemons = new Pokemon[4];
+
+        public Pokemon[] Pokemons
+        {
+            get => _pokemons;
+            set => _pokemons = value;
+        }
         public PickPokemonForm()
         {
             InitializeComponent();
+            Pokemons[0] = new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire,
+                new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.charmander;
+            
+            Pokemons[1] = new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass,
+                new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
+            
+            Pokemons[2] = new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder,
+                new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.pikachu;
+            
+            Pokemons[3] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
+                new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[3].Image.Image = global::PokemonProject.Properties.Resources.squirtle;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Charmander không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes) {
-                StageForm fightForm = new StageForm();
+                StageForm fightForm = new StageForm(Pokemons[0]);
                 fightForm.Show();
                 this.Close();
             }
@@ -33,7 +56,7 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Bulbasaur không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                StageForm fightForm = new StageForm();
+                StageForm fightForm = new StageForm(Pokemons[1]);
                 fightForm.Show();
                 this.Close();
             }
@@ -44,7 +67,7 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Squirtle không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                StageForm fightForm = new StageForm();
+                StageForm fightForm = new StageForm(Pokemons[2]);
                 fightForm.Show();
                 this.Close();
             }
@@ -55,7 +78,7 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Pikachu không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                StageForm fightForm = new StageForm();
+                StageForm fightForm = new StageForm(Pokemons[3]);
                 fightForm.Show();
                 this.Close();
             }

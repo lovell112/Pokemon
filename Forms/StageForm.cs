@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PokemonProject.Models;
 
 namespace PokemonProject.Forms
 {
@@ -15,9 +16,20 @@ namespace PokemonProject.Forms
     {
         Random random = new Random(); // 🔹 Sinh số ngẫu nhiên cho phản công
 
-        public StageForm()
+        private Pokemon pokemon_1;
+        private Pokemon pokemon_2;
+        private bool _unlock;
+
+        public bool Unlock
+        {
+            get => _unlock;
+            set => _unlock = value;
+        }
+        
+        public StageForm(Pokemon pokemonBoss)
         {
             InitializeComponent();
+            pokemon_2 = pokemonBoss;
         }
 
         private void Fight_Load(object sender, EventArgs e)
@@ -44,7 +56,6 @@ namespace PokemonProject.Forms
 
             UpdateHPLabels();
         }
-
 
         private void MouseEnter(object sender, EventArgs e)
         {
@@ -198,7 +209,6 @@ namespace PokemonProject.Forms
             txtComment.SelectionStart = txtComment.Text.Length;
             txtComment.ScrollToCaret();
         }
-
 
         private void btnNhac_Click(object sender, EventArgs e)
         {

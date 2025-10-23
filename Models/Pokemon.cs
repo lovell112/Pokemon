@@ -20,11 +20,9 @@ namespace PokemonProject.Models
 
         public Skill Skill1 { get; set; }
         public Skill Skill2 { get; set; }
-        public Skill Skill3 { get; set; }
-        public Skill Skill4 { get; set; }
 
 
-        public Pokemon(string name, PictureBox image, double hp, Systems system, Skill skill1, Skill skill2, Skill skill3, Skill skill4)
+        public Pokemon(string name, PictureBox image, double hp, Systems system, Skill skill1, Skill skill2)
         {
             _Name = name;
             _Image = image;
@@ -32,8 +30,6 @@ namespace PokemonProject.Models
             _System = system;
             Skill1 = skill1;
             Skill2 = skill2;
-            Skill3 = skill3;
-            Skill4 = skill4;
         }
 
         public string Name

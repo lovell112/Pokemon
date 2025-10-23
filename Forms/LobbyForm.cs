@@ -9,24 +9,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using PokemonProject.Models;
 
 namespace PokemonProject.Forms
 {
     public partial class LobbyForm : Form
     {
 
-        private string playerName;
+        private User _player;
 
-        public LobbyForm(string Name)
+        public User Player
+        {
+            get => _player;
+            set => _player = value;
+        }
+
+        public LobbyForm(User player)
         {
             InitializeComponent();
             this.Resize += Sanh_Resize; // Gọi lại khi thay đổi kích thước
-            playerName = Name;
+            Player = player;
         }
         #region hàm giao diện
         private void Form1_Load(object sender, EventArgs e)
         {
-            linkLabelLogout.Text = $"{playerName} — Đăng xuất";
+            linkLabelLogout.Text = $"{Player.Name} — Đăng xuất";
 
             axWindowsMediaPlayer1.URL = Path.Combine(Application.StartupPath, "Resources/Audio/Music.mp3");
             axWindowsMediaPlayer1.settings.setMode("loop", true);
@@ -123,9 +130,9 @@ namespace PokemonProject.Forms
 
         private void Play_Click(object sender, EventArgs e)
         {
-            PickStageForm form2 = new PickStageForm();
-            form2.FormClosed += (s, args) => this.Show();
-            form2.Show();
+            PickStageForm pickStageForm = new PickStageForm(Player);
+            pickStageForm.FormClosed += (s, args) => this.Show();
+            pickStageForm.Show();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
             this.Hide();
         }

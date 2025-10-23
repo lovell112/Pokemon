@@ -12,13 +12,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using PokemonProject.Models;
+using StageForm = PokemonProject.Forms.StageForm;
 
 namespace PokemonProject
 {
     public partial class LoginForm : Form
     {
         Panel panelDangKy = new Panel();
+        private User _player;
 
+        public User Player
+        {
+            get => _player;
+            set => _player = value;
+        }
+
+        private Pokemon[] _pokemons;
+
+        public Pokemon[] Pokemons
+        {
+            get => _pokemons;
+            set => _pokemons = value;
+        }
+
+        private StageForm[] _stages;
+
+        public StageForm[] Stages
+        {
+            get => _stages;
+            set => _stages = value;
+        }
+        
         #region các hàm giao diện
         private void Login_Resize(object sender, EventArgs e)
         {
@@ -49,7 +74,6 @@ namespace PokemonProject
                 btnXacnhan.BackColor = coTen ? Color.FromArgb(180, 0, 128, 0) : Color.Gray;
                 btnXacnhan.ForeColor = coTen ? Color.White : Color.LightGray;
             };
-
         }
         private void MouseEnter(object sender, EventArgs e)
         {
@@ -79,13 +103,38 @@ namespace PokemonProject
         public LoginForm()
         {
             InitializeComponent();
+            // StageForm Stage1 = new StageForm()
         }
 
+        private void initPokemon()
+        {
+            Pokemons= new Pokemon[4];
+            Pokemons[0] = new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire,
+                new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.charmander;
+            Pokemons[1] = new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass,
+                new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
+            Pokemons[2] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
+                new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.squirtle;
+            Pokemons[3] = new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder,
+                new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[3].Image.Image = global::PokemonProject.Properties.Resources.pikachu;
+        }
+
+        private void initStageForm()
+        {
+            Stages = new StageForm[3];
+            Stages[0] = new StageForm(Pokemons[0]);
+            Stages[1] = new StageForm(Pokemons[1]);
+            Stages[2] = new StageForm(Pokemons[2]);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string playerName = HoTen.Text.Trim();
-            LobbyForm s = new LobbyForm(playerName); // 🔹 Truyền tên qua constructor
+            Player = new User(HoTen.Text.Trim(), Stages, Pokemons);
+            LobbyForm s = new LobbyForm(Player); // 🔹 Truyền tên qua constructor
             s.Show();
             this.Hide();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
@@ -105,9 +154,5 @@ namespace PokemonProject
                 btnNhac.Text = "🔊";
             }
         }
-        
-        
-
-
     }
 }

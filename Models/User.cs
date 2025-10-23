@@ -5,11 +5,12 @@ namespace PokemonProject.Models
     public class User
     {
         //Constructor
-        public User(string name, PickStageForm initialStage)
+        public User(string name, StageForm[] initialStages, Pokemon[] initialPokemons)
         {
-            _name = name;
-            _selectedStage = initialStage;
-            _highestLevelUnlock = 1;
+            Name = name;
+            Stageses = initialStages;
+            Pokemons = initialPokemons;
+            HighestLevelUnlock = 1;
         }
 
         //get - set
@@ -27,11 +28,11 @@ namespace PokemonProject.Models
             set => _highestLevelUnlock = value;
         }
 
-        private PickStageForm[] _stages;
-        public PickStageForm[] Stages
+        private StageForm[] _stageses;
+        public StageForm[] Stageses
         {
-            get => _stages;
-            set => _stages = value;
+            get => _stageses;
+            set => _stageses = value;
         }
 
         private Pokemon _pokemon;
@@ -39,6 +40,14 @@ namespace PokemonProject.Models
         {
             get => _pokemon;
             set => _pokemon = value;
+        }
+
+        private Pokemon[] _pokemons;
+
+        public Pokemon[] Pokemons
+        {
+            get => _pokemons;
+            set => _pokemons = value;
         }
 
         private PickStageForm _selectedStage;

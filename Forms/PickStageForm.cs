@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PokemonProject.Models;
 
 namespace PokemonProject.Forms
 {
@@ -10,10 +11,18 @@ namespace PokemonProject.Forms
     {
         private bool stage1Completed = false;
         private bool stage2Completed = false;
+        private StageForm[] _stages;
 
-        public PickStageForm()
+        public StageForm[] Stages
+        {
+            get => _stages;
+            set => _stages = value;
+        }
+
+        public PickStageForm(User player)
         {
             InitializeComponent();
+            Stages = player.Stageses;
         }
 
         private void button1_Click(object sender, EventArgs e)
