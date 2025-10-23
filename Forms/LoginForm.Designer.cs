@@ -49,8 +49,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::PokemonProject.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1429, 252);
+            this.pictureBox1.Size = new System.Drawing.Size(1905, 310);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -59,6 +60,7 @@
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
             this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
+            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
@@ -68,9 +70,10 @@
             // btnNhac
             // 
             this.btnNhac.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhac.Location = new System.Drawing.Point(71, 29);
+            this.btnNhac.Location = new System.Drawing.Point(95, 36);
+            this.btnNhac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNhac.Name = "btnNhac";
-            this.btnNhac.Size = new System.Drawing.Size(60, 35);
+            this.btnNhac.Size = new System.Drawing.Size(80, 43);
             this.btnNhac.TabIndex = 5;
             this.btnNhac.Text = "🔊";
             this.btnNhac.UseVisualStyleBackColor = true;
@@ -81,10 +84,10 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.PanelNhapTen);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 252);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(0, 310);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1429, 591);
+            this.panel2.Size = new System.Drawing.Size(1905, 728);
             this.panel2.TabIndex = 7;
             // 
             // PanelNhapTen
@@ -94,10 +97,10 @@
             this.PanelNhapTen.Controls.Add(this.label1);
             this.PanelNhapTen.Controls.Add(this.btnXacnhan);
             this.PanelNhapTen.Controls.Add(this.HoTen);
-            this.PanelNhapTen.Location = new System.Drawing.Point(403, 5);
-            this.PanelNhapTen.Margin = new System.Windows.Forms.Padding(2);
+            this.PanelNhapTen.Location = new System.Drawing.Point(537, 6);
+            this.PanelNhapTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PanelNhapTen.Name = "PanelNhapTen";
-            this.PanelNhapTen.Size = new System.Drawing.Size(697, 434);
+            this.PanelNhapTen.Size = new System.Drawing.Size(929, 534);
             this.PanelNhapTen.TabIndex = 4;
             // 
             // label1
@@ -105,9 +108,10 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(114, 121);
+            this.label1.Location = new System.Drawing.Point(152, 149);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(461, 42);
+            this.label1.Size = new System.Drawing.Size(582, 53);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập Tên Nhà Huấn Luyện";
             // 
@@ -115,9 +119,10 @@
             // 
             this.btnXacnhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXacnhan.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacnhan.Location = new System.Drawing.Point(258, 301);
+            this.btnXacnhan.Location = new System.Drawing.Point(344, 370);
+            this.btnXacnhan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXacnhan.Name = "btnXacnhan";
-            this.btnXacnhan.Size = new System.Drawing.Size(181, 55);
+            this.btnXacnhan.Size = new System.Drawing.Size(241, 68);
             this.btnXacnhan.TabIndex = 5;
             this.btnXacnhan.Text = "XÁC NHẬN";
             this.btnXacnhan.UseVisualStyleBackColor = true;
@@ -127,27 +132,30 @@
             // 
             this.HoTen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.HoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoTen.Location = new System.Drawing.Point(157, 212);
+            this.HoTen.Location = new System.Drawing.Point(209, 261);
+            this.HoTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HoTen.MaxLength = 30;
             this.HoTen.Name = "HoTen";
-            this.HoTen.Size = new System.Drawing.Size(380, 49);
+            this.HoTen.Size = new System.Drawing.Size(505, 60);
             this.HoTen.TabIndex = 2;
             this.HoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // Login
+            // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PokemonProject.Properties.Resources.Loginwallpaper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1429, 843);
+            this.ClientSize = new System.Drawing.Size(1905, 1038);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnNhac);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pokemon";
+            this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Login_Load);
             this.Resize += new System.EventHandler(this.Login_Resize);

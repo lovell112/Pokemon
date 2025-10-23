@@ -66,6 +66,7 @@ namespace PokemonProject.Models
         public void PickStage(PickStageForm stage)
         {
             _selectedStage = stage;
+            stage.Show();
         }
     }
 }
