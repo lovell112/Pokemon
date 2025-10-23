@@ -49,7 +49,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::PokemonProject.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1905, 310);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -60,7 +60,7 @@
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
             this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
-            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(4);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
@@ -71,7 +71,7 @@
             // 
             this.btnNhac.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhac.Location = new System.Drawing.Point(95, 36);
-            this.btnNhac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNhac.Margin = new System.Windows.Forms.Padding(4);
             this.btnNhac.Name = "btnNhac";
             this.btnNhac.Size = new System.Drawing.Size(80, 43);
             this.btnNhac.TabIndex = 5;
@@ -118,9 +118,10 @@
             // btnXacnhan
             // 
             this.btnXacnhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXacnhan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXacnhan.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXacnhan.Location = new System.Drawing.Point(344, 370);
-            this.btnXacnhan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXacnhan.Margin = new System.Windows.Forms.Padding(4);
             this.btnXacnhan.Name = "btnXacnhan";
             this.btnXacnhan.Size = new System.Drawing.Size(241, 68);
             this.btnXacnhan.TabIndex = 5;
@@ -133,7 +134,7 @@
             this.HoTen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.HoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HoTen.Location = new System.Drawing.Point(209, 261);
-            this.HoTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HoTen.Margin = new System.Windows.Forms.Padding(4);
             this.HoTen.MaxLength = 30;
             this.HoTen.Name = "HoTen";
             this.HoTen.Size = new System.Drawing.Size(505, 60);
@@ -152,7 +153,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
