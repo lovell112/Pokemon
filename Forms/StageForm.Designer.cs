@@ -175,7 +175,7 @@
             // pictureBoxEnemy
             // 
             this.pictureBoxEnemy.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxEnemy.Image = global::PokemonProject.Properties.Resources.charmander;
+            this.pictureBoxEnemy.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
             this.pictureBoxEnemy.Location = new System.Drawing.Point(0, 119);
             this.pictureBoxEnemy.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxEnemy.Name = "pictureBoxEnemy";

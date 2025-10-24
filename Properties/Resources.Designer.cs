@@ -63,6 +63,16 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BalbasaurEnemy {
+            get {
+                object obj = ResourceManager.GetObject("BalbasaurEnemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bulbasaur {
             get {
                 object obj = ResourceManager.GetObject("Bulbasaur", resourceCulture);
@@ -73,9 +83,19 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap charmander {
+        internal static System.Drawing.Bitmap Charmande {
             get {
-                object obj = ResourceManager.GetObject("charmander", resourceCulture);
+                object obj = ResourceManager.GetObject("Charmande", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap charmanderEnemy {
+            get {
+                object obj = ResourceManager.GetObject("charmanderEnemy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,16 +136,6 @@ namespace PokemonProject.Properties {
         internal static System.Drawing.Bitmap GrassAtk {
             get {
                 object obj = ResourceManager.GetObject("GrassAtk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap login {
-            get {
-                object obj = ResourceManager.GetObject("login", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +203,19 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pikachu {
+        internal static System.Drawing.Bitmap pikachuEnemy {
             get {
-                object obj = ResourceManager.GetObject("pikachu", resourceCulture);
+                object obj = ResourceManager.GetObject("pikachuEnemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pikachuu {
+            get {
+                object obj = ResourceManager.GetObject("pikachuu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +243,9 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap squirtle {
+        internal static System.Drawing.Bitmap Squirtle {
             get {
-                object obj = ResourceManager.GetObject("squirtle", resourceCulture);
+                object obj = ResourceManager.GetObject("Squirtle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +253,19 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Thanks_You_For_Playing_1__1_ {
+        internal static System.Drawing.Bitmap squirtleEnemy {
             get {
-                object obj = ResourceManager.GetObject("Thanks You For Playing(1)(1)", resourceCulture);
+                object obj = ResourceManager.GetObject("squirtleEnemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Thanks_You_For_Playing {
+            get {
+                object obj = ResourceManager.GetObject("Thanks You For Playing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

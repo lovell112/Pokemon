@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PokemonProject.Properties.Resources.Thanks_You_For_Playing_1__1_;
+            this.BackgroundImage = global::PokemonProject.Properties.Resources.Thanks_You_For_Playing;
             this.ClientSize = new System.Drawing.Size(1045, 814);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

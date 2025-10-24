@@ -121,14 +121,23 @@
   <data name="R" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\R.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Charmande" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Charmande.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="forestback" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\forestback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="man2-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\man2-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Thanks You For Playing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Thanks You For Playing(1)(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Fight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\Fight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="squirtleEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\squirtleEnemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,29 +145,32 @@
   <data name="Bulbasaur" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\Bulbasaur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Thanks You For Playing(1)(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Images\Thanks You For Playing(1)(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Fight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\Fight1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Loginwallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Loginwallpaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Images\Loginwallpaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="man3-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\man3-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pikachu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Images\pikachu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pikachuu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\pikachuu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="charmander" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Images\charmander.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pikachuEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\pikachuEnemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="charmanderEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\charmanderEnemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BalbasaurEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\BalbasaurEnemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Manchoi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Manchoi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GrassAtk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\GrassAtk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="squirtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Images\squirtle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="R1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\R.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,10 +178,7 @@
   <data name="man1-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\man1-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Images\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Manchoi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Manchoi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Squirtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Squirtle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

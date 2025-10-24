@@ -109,18 +109,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\Bulbasaur.png" />
-    <None Include="Resources\Images\charmander.png" />
+    <None Include="Resources\Images\charmanderEnemy.png" />
     <None Include="Resources\Images\Fight.jpg" />
     <None Include="Resources\Images\Fight1.jpg" />
     <None Include="Resources\Images\forestback.png" />
@@ -143,7 +143,7 @@
     <None Include="Resources\Images\man1-removebg-preview.png" />
     <None Include="Resources\Images\man2-removebg-preview.png" />
     <None Include="Resources\Images\man3-removebg-preview.png" />
-    <None Include="Resources\Images\pikachu.png" />
+    <None Include="Resources\Images\pikachuEnemy.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\R.jpg" />
@@ -158,10 +158,8 @@
     <Content Include="Resources\Audio\Music.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Manchoi.png" />
-    <None Include="Resources\Loginwallpaper.jpg" />
     <None Include="Resources\Images\R.png" />
-    <None Include="Resources\Images\squirtle.png" />
+    <None Include="Resources\Images\squirtleEnemy.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
