@@ -18,13 +18,13 @@ namespace PokemonProject.Forms
 
         private Pokemon pokemon_1;
         private Pokemon pokemon_2;
-        private bool _unlock;
+        //private bool _unlock;
 
-        public bool Unlock
-        {
-            get => _unlock;
-            set => _unlock = value;
-        }
+        //public bool Unlock
+        //{
+        //    get => _unlock;
+        //    set => _unlock = value;
+        //}
 
         public StageForm(Pokemon selectedPokemon)
         {
@@ -234,5 +234,9 @@ namespace PokemonProject.Forms
             }
         }
 
+        private void PanelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

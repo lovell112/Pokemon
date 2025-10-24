@@ -1,5 +1,6 @@
 ﻿using PokemonProject.Forms;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -84,6 +85,7 @@ namespace PokemonProject.Models
         {
             try
             {
+                // 🎯 SỬA: Sử dụng File.WriteAllText để GHI ĐÈ, đảm bảo chỉ lưu trạng thái mới nhất
                 string line = $"{Name}|{Pokemon?.Name}|{HighestLevelUnlock}";
                 File.WriteAllText(UserDataPath, line);
             }
@@ -101,6 +103,7 @@ namespace PokemonProject.Models
             {
                 if (File.Exists(UserDataPath))
                 {
+                    // 🎯 SỬA: Đọc toàn bộ nội dung file (chỉ 1 dòng duy nhất sau khi SaveUserData được sửa)
                     string line = File.ReadAllText(UserDataPath).Trim();
                     if (!string.IsNullOrEmpty(line))
                     {
@@ -114,7 +117,7 @@ namespace PokemonProject.Models
                             User user = new User(name, availableStages, availablePokemons);
                             user.HighestLevelUnlock = stage;
 
-                            // Gán Pokémon đã chọn nếu có
+                            // ... (Giữ nguyên logic gán Pokemon)
                             if (!string.IsNullOrEmpty(pokemonName))
                             {
                                 user.Pokemon = availablePokemons.FirstOrDefault(p => p.Name == pokemonName);

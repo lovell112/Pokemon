@@ -9,8 +9,13 @@ namespace PokemonProject.Forms
 {
     public partial class PickStageForm : Form
     {
-        private bool stage1Completed = false;
-        private bool stage2Completed = false;
+        private User _player;
+        public User Player
+        {
+            get => _player;
+            set => _player = value;
+        }
+
         private StageForm[] _stages;
 
         public StageForm[] Stages
@@ -22,6 +27,7 @@ namespace PokemonProject.Forms
         public PickStageForm(User player)
         {
             InitializeComponent();
+            Player = player;
             Stages = player.Stageses;
         }
 
@@ -42,13 +48,41 @@ namespace PokemonProject.Forms
             SetupPictureBoxHover(pictureBox2);
             SetupPictureBoxHover(pictureBox3);
 
-            // Chỉ cho màn 1 được chọn lúc đầu
-            pictureBox1.Enabled = true;
-            pictureBox2.Enabled = false;
-            pictureBox3.Enabled = false;
+            //LOGIC TẢI TRẠNG THÁI MỞ KHÓA
+            UpdateStageLockStatus();
+        }
 
-            pictureBox2.BackColor = Color.Gray;
-            pictureBox3.BackColor = Color.Gray;
+
+        //Hàm cập nhật trạng thái các màn chơi
+        private void UpdateStageLockStatus()
+        {
+            // Stage 1: Level 1
+            pictureBox1.Enabled = true;
+            pictureBox1.BackColor = Color.Transparent;
+
+            // Stage 2: Level 2
+            if (Player.HighestLevelUnlock > 2)
+            {
+                pictureBox2.Enabled = true;
+                pictureBox2.BackColor = Color.Transparent;
+            }
+            else
+            {
+                pictureBox2.Enabled = false;
+                pictureBox2.BackColor = Color.Gray;
+            }
+
+            // Stage 3: Level 3
+            if (Player.HighestLevelUnlock > 3)
+            {
+                pictureBox3.Enabled = true;
+                pictureBox3.BackColor = Color.Transparent;
+            }
+            else
+            {
+                pictureBox3.Enabled = false;
+                pictureBox3.BackColor = Color.Gray;
+            }
         }
 
         // 🧩 Hiệu ứng hover rung nhẹ
@@ -81,58 +115,73 @@ namespace PokemonProject.Forms
             };
         }
 
+        //Hàm xử lý khi hoàn thành Stage
+        private void HandleStageCompletion(DialogResult result, int completedStageLevel)
+        {
+            if (result == DialogResult.OK && Player.HighestLevelUnlock == completedStageLevel)
+            {
+                int nextLevel = completedStageLevel + 1;
+
+                // Đảm bảo không vượt quá giới hạn màn chơi
+                if (nextLevel < Stages.Length + 1)
+                {
+                    Player.HighestLevelUnlock = nextLevel;
+                    Player.SaveUserData();
+
+                    // Cập nhật giao diện ngay lập tức
+                    UpdateStageLockStatus();
+
+                    MessageBox.Show($"Chúc mừng! Màn {nextLevel} đã được mở khóa!", "Thành tích mới", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (!pictureBox1.Enabled) return;
 
-            PickPokemonForm poke = new PickPokemonForm();
-            poke.Show();
+            //Lấy StageForm tương ứng với màn 1 (Stages[0])
+            StageForm fightForm = Stages[0];
 
-            poke.FormClosed += (s, args) =>
-            {
-                stage1Completed = true;
-                pictureBox2.Enabled = true;
-                pictureBox2.BackColor = Color.Transparent;
+            // Mở form chiến đấu
+            fightForm.ShowDialog();
 
-                Program.CurrentUser.HighestLevelUnlock = 1; // Màn 1 đã hoàn thành
-                Program.CurrentUser.SaveUserData();
-            };
+            // Kiểm tra kết quả
+            HandleStageCompletion(fightForm.DialogResult, 1);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (!stage1Completed)
+            if (!pictureBox2.Enabled)
             {
                 MessageBox.Show("⚠️ Bạn phải hoàn thành Màn 1 trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            PickPokemonForm poke = new PickPokemonForm();
-            poke.Show();
+            //Lấy StageForm tương ứng với màn 2(Stages[1])
+            StageForm fightForm = Stages[1];
 
-            poke.FormClosed += (s, args) =>
-            {
-                stage2Completed = true;
-                pictureBox3.Enabled = true;
-                pictureBox3.BackColor = Color.Transparent;
+            fightForm.ShowDialog();
 
-                Program.CurrentUser.HighestLevelUnlock = 2; // Màn 2 đã hoàn thành
-                Program.CurrentUser.SaveUserData();
-            };
+            // Kiểm tra kết quả
+            HandleStageCompletion(fightForm.DialogResult, 2);
         }
+        
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if (!stage2Completed)
+            if (!pictureBox3.Enabled)
             {
                 MessageBox.Show("⚠️ Bạn phải hoàn thành Màn 2 trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Program.CurrentUser.HighestLevelUnlock = 3; // Màn 3 đã hoàn thành
-            Program.CurrentUser.SaveUserData();
-            PickPokemonForm poke = new PickPokemonForm();
-            poke.Show();
+            //Lấy StageForm tương ứng với màn 2(Stages[1])
+            StageForm fightForm = Stages[2];
+
+            fightForm.ShowDialog();
+
+            // Kiểm tra kết quả
+            HandleStageCompletion(fightForm.DialogResult, 3);
         }
     }
 }

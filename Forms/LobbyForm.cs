@@ -164,7 +164,8 @@ namespace PokemonProject.Forms
                 // Quay lại form Login
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
-                this.Close();
+                axWindowsMediaPlayer1.Ctlcontrols.pause();
+                this.Hide();
             }
         }
     }

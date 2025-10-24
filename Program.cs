@@ -11,6 +11,7 @@ namespace PokemonProject
     internal static class Program
     {
         public static User CurrentUser; // Biến toàn cục để giữ user hiện tại
+        public static List<User> AllUsers;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -37,19 +38,21 @@ namespace PokemonProject
                 new StageForm(pokemons[2])
             };
 
+            // Tải tất cả user đã lưu
+            AllUsers = User.LoadAllUsers(pokemons, stages);
+            // Tải user gần nhất để kiểm tra login
             User lastUser = User.LoadLastUser(pokemons, stages);
-
 
 
             if (lastUser != null)
             {
                 Program.CurrentUser = lastUser;
-                // Vào thẳng Lobby
+                // Vào thẳng Lobby với tên người dùng gần nhất
                 Application.Run(new LobbyForm(lastUser));
             }
             else
             {
-                // Chưa có user -> Login
+                // Chưa có user nào được lưu -> Vào màn hình Login
                 Application.Run(new LoginForm());
             }
         }

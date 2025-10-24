@@ -266,6 +266,7 @@
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(1924, 362);
             this.PanelTop.TabIndex = 7;
+            this.PanelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelTop_Paint);
             // 
             // txtComment
             // 

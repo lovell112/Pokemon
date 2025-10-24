@@ -133,11 +133,36 @@ namespace PokemonProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Player = new User(HoTen.Text.Trim(), Stages, Pokemons);
-            Program.CurrentUser = Player;
-            Player.SaveUserData();
+            string userName = HoTen.Text.Trim();
 
-            LobbyForm s = new LobbyForm(Player); // 🔹 Truyền tên qua constructor
+            // 1. Khởi tạo Pokémon và Stage nếu cần
+            if (Pokemons == null)
+            {
+                initPokemon();
+                initStageForm();
+            }
+
+            // 2. Kiểm tra dữ liệu người dùng gần nhất
+            User lastSavedUser = User.LoadLastUser(Pokemons, Stages);
+
+            //Kiểm tra tên có trùng không
+            if (lastSavedUser != null && lastSavedUser.Name.Equals(userName, StringComparison.OrdinalIgnoreCase))
+            {
+                // Tên trùng với người dùng cuối cùng đã lưu: Tải dữ liệu cũ
+                Player = lastSavedUser;
+            }
+            else
+            {
+                // Tên mới HOẶC tên không trùng với người dùng cuối cùng: Tạo User mới (HighestLevelUnlock = 0)
+                Player = new User(userName, Stages, Pokemons);
+            }
+
+            // 3. Gán User hiện tại cho biến toàn cục và Lưu/Cập nhật dữ liệu
+            Program.CurrentUser = Player;
+            Player.SaveUserData(); // Ghi đè file với dữ liệu người chơi hiện tại (Đã fix trong User.cs)
+
+            // 4. Chuyển sang Lobby
+            LobbyForm s = new LobbyForm(Player);
             s.Show();
             this.Hide();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
