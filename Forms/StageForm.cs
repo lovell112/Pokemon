@@ -25,15 +25,24 @@ namespace PokemonProject.Forms
             get => _unlock;
             set => _unlock = value;
         }
-        
-        public StageForm(Pokemon pokemonBoss)
+
+        public StageForm(Pokemon selectedPokemon)
         {
             InitializeComponent();
-            pokemon_2 = pokemonBoss;
+            pokemon_1 = selectedPokemon;
         }
+        //public StageForm(Pokemon pokemonBoss)
+        //{
+        //    InitializeComponent();
+        //    pokemon_2 = pokemonBoss;
+        //}
 
         private void Fight_Load(object sender, EventArgs e)
         {
+
+
+            pictureBoxPokemon.Image = pokemon_1.Image.Image;
+
             // Nhạc nền
             axWindowsMediaPlayer1.URL = Path.Combine(Application.StartupPath, "Resources/Audio/Fight.mp3");
             axWindowsMediaPlayer1.settings.setMode("loop", true);

@@ -26,19 +26,19 @@ namespace PokemonProject.Forms
             InitializeComponent();
             Pokemons[0] = new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire,
                 new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
+            Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.Charmande;
             
             Pokemons[1] = new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass,
                 new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
             Pokemons[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
             
-            Pokemons[2] = new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder,
-                new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.pikachuEnemy;
-            
-            Pokemons[3] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
+            Pokemons[2] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
                 new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[3].Image.Image = global::PokemonProject.Properties.Resources.squirtleEnemy;
+            Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.Squirtle;
+
+            Pokemons[3] = new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder,
+                new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
+            Pokemons[3].Image.Image = global::PokemonProject.Properties.Resources.pikachuu;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
