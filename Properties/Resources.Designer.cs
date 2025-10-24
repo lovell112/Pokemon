@@ -123,6 +123,16 @@ namespace PokemonProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FireAttack {
+            get {
+                object obj = ResourceManager.GetObject("FireAttack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap forestback {
             get {
                 object obj = ResourceManager.GetObject("forestback", resourceCulture);
@@ -266,6 +276,26 @@ namespace PokemonProject.Properties {
         internal static System.Drawing.Bitmap Thanks_You_For_Playing {
             get {
                 object obj = ResourceManager.GetObject("Thanks You For Playing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ThunderAttack {
+            get {
+                object obj = ResourceManager.GetObject("ThunderAttack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WaterAttack {
+            get {
+                object obj = ResourceManager.GetObject("WaterAttack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
