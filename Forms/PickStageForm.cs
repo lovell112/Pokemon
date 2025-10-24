@@ -93,6 +93,9 @@ namespace PokemonProject.Forms
                 stage1Completed = true;
                 pictureBox2.Enabled = true;
                 pictureBox2.BackColor = Color.Transparent;
+
+                Program.CurrentUser.HighestLevelUnlock = 1; // Màn 1 đã hoàn thành
+                Program.CurrentUser.SaveUserData();
             };
         }
 
@@ -112,6 +115,9 @@ namespace PokemonProject.Forms
                 stage2Completed = true;
                 pictureBox3.Enabled = true;
                 pictureBox3.BackColor = Color.Transparent;
+
+                Program.CurrentUser.HighestLevelUnlock = 2; // Màn 2 đã hoàn thành
+                Program.CurrentUser.SaveUserData();
             };
         }
 
@@ -123,6 +129,8 @@ namespace PokemonProject.Forms
                 return;
             }
 
+            Program.CurrentUser.HighestLevelUnlock = 3; // Màn 3 đã hoàn thành
+            Program.CurrentUser.SaveUserData();
             PickPokemonForm poke = new PickPokemonForm();
             poke.Show();
         }

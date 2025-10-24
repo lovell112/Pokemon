@@ -10,28 +10,46 @@ namespace PokemonProject
 {
     internal static class Program
     {
+        public static User CurrentUser; // Biến toàn cục để giữ user hiện tại
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string lastUserName = User.LoadLastUser();
-
-            if (!string.IsNullOrEmpty(lastUserName))
+            // Khởi tạo danh sách Pokémon và Stage mặc định
+            Pokemon[] pokemons = new Pokemon[4]
             {
-                // Nếu đã có tên user -> tạo User và vào thẳng Lobby
-                var pokemons = new Pokemon[0];
-                var stages = new StageForm[0];
-                var user = new User(lastUserName, stages, pokemons);
-                Application.Run(new LobbyForm(user));
+                new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire, new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox())),
+                new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass, new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox())),
+                new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water, new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox())),
+                new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder, new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()))
+            };
+
+            StageForm[] stages = new StageForm[3]
+            {
+                new StageForm(pokemons[0]),
+                new StageForm(pokemons[1]),
+                new StageForm(pokemons[2])
+            };
+
+            User lastUser = User.LoadLastUser(pokemons, stages);
+
+
+
+            if (lastUser != null)
+            {
+                Program.CurrentUser = lastUser;
+                // Vào thẳng Lobby
+                Application.Run(new LobbyForm(lastUser));
             }
             else
             {
-                // Nếu chưa có -> vào form Login
+                // Chưa có user -> Login
                 Application.Run(new LoginForm());
             }
         }

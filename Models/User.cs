@@ -1,6 +1,7 @@
 ﻿using PokemonProject.Forms;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PokemonProject.Models
@@ -83,7 +84,8 @@ namespace PokemonProject.Models
         {
             try
             {
-                File.WriteAllText(UserDataPath, Name);
+                string line = $"{Name}|{Pokemon?.Name}|{HighestLevelUnlock}";
+                File.WriteAllText(UserDataPath, line);
             }
             catch (Exception ex)
             {
@@ -93,15 +95,34 @@ namespace PokemonProject.Models
         #endregion
 
         #region Đọc tên người dùng gần nhất từ file txt
-        public static string LoadLastUser()
+        public static User LoadLastUser(Pokemon[] availablePokemons, StageForm[] availableStages)
         {
             try
             {
                 if (File.Exists(UserDataPath))
                 {
-                    string name = File.ReadAllText(UserDataPath).Trim();
-                    if (!string.IsNullOrEmpty(name))
-                        return name;
+                    string line = File.ReadAllText(UserDataPath).Trim();
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        string[] parts = line.Split('|');
+                        if (parts.Length == 3)
+                        {
+                            string name = parts[0];
+                            string pokemonName = parts[1];
+                            int stage = int.Parse(parts[2]);
+
+                            User user = new User(name, availableStages, availablePokemons);
+                            user.HighestLevelUnlock = stage;
+
+                            // Gán Pokémon đã chọn nếu có
+                            if (!string.IsNullOrEmpty(pokemonName))
+                            {
+                                user.Pokemon = availablePokemons.FirstOrDefault(p => p.Name == pokemonName);
+                            }
+
+                            return user;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
