@@ -134,6 +134,8 @@ namespace PokemonProject
         private void button1_Click(object sender, EventArgs e)
         {
             Player = new User(HoTen.Text.Trim(), Stages, Pokemons);
+            Player.SaveUserData();
+
             LobbyForm s = new LobbyForm(Player); // 🔹 Truyền tên qua constructor
             s.Show();
             this.Hide();

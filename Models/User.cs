@@ -1,10 +1,13 @@
 ﻿using PokemonProject.Forms;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace PokemonProject.Models
 {
     public class User
     {
-        //Constructor
+        #region Constructor
         public User(string name, StageForm[] initialStages, Pokemon[] initialPokemons)
         {
             Name = name;
@@ -12,8 +15,9 @@ namespace PokemonProject.Models
             Pokemons = initialPokemons;
             HighestLevelUnlock = 1;
         }
-
-        //get - set
+        #endregion
+        
+        #region get - set
         private string _name;
         public string Name
         {
@@ -56,8 +60,9 @@ namespace PokemonProject.Models
             get => _selectedStage;
             set => _selectedStage = value;
         }
+        #endregion
 
-        // Methods
+        #region Methods
         public void PickPokemon(Pokemon pokemon)
         {
             _pokemon = pokemon;
@@ -68,5 +73,44 @@ namespace PokemonProject.Models
             _selectedStage = stage;
             stage.Show();
         }
+        #endregion
+
+
+        private static readonly string UserDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt"); //đường dẫn thư mục đang chạy chương trình
+
+        #region Lưu tên người dùng hiện tại
+        public void SaveUserData()
+        {
+            try
+            {
+                File.WriteAllText(UserDataPath, Name);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu dữ liệu người dùng: {ex.Message}");
+            }
+        }
+        #endregion
+
+        #region Đọc tên người dùng gần nhất từ file txt
+        public static string LoadLastUser()
+        {
+            try
+            {
+                if (File.Exists(UserDataPath))
+                {
+                    string name = File.ReadAllText(UserDataPath).Trim();
+                    if (!string.IsNullOrEmpty(name))
+                        return name;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi đọc dữ liệu người dùng: {ex.Message}");
+            }
+            return null;
+        }
+        #endregion
+
     }
 }
