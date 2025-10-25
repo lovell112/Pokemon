@@ -126,7 +126,6 @@ namespace PokemonProject.Forms
                 if (nextLevel < Stages.Length + 1)
                 {
                     Player.HighestLevelUnlock = nextLevel;
-                    Player.SaveUserData();
 
                     // Cập nhật giao diện ngay lập tức
                     UpdateStageLockStatus();
