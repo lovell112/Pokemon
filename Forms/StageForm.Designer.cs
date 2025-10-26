@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblHpPokemon = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPokemonName = new System.Windows.Forms.Label();
             this.PanelSkill = new System.Windows.Forms.Panel();
             this.skill1 = new System.Windows.Forms.Button();
             this.skill2 = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.PanelEnemyNameBar = new System.Windows.Forms.Panel();
             this.lblHpenemy = new System.Windows.Forms.Label();
-            this.lblenemy = new System.Windows.Forms.Label();
+            this.lblenemyName = new System.Windows.Forms.Label();
             this.PanelEnemy = new System.Windows.Forms.Panel();
             this.PanelTop = new System.Windows.Forms.Panel();
             this.txtComment = new System.Windows.Forms.RichTextBox();
@@ -79,7 +79,7 @@
             // 
             this.panel1.Controls.Add(this.lblHpPokemon);
             this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblPokemonName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(4, 19);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -106,18 +106,18 @@
             this.progressBar1.Size = new System.Drawing.Size(637, 55);
             this.progressBar1.TabIndex = 2;
             // 
-            // label1
+            // lblPokemonName
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(201, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 53);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Balbasaur";
+            this.lblPokemonName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblPokemonName.AutoSize = true;
+            this.lblPokemonName.BackColor = System.Drawing.Color.Transparent;
+            this.lblPokemonName.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblPokemonName.Location = new System.Drawing.Point(75, 56);
+            this.lblPokemonName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPokemonName.Name = "lblPokemonName";
+            this.lblPokemonName.Size = new System.Drawing.Size(182, 42);
+            this.lblPokemonName.TabIndex = 7;
+            this.lblPokemonName.Text = "Balbasaur";
             // 
             // PanelSkill
             // 
@@ -208,7 +208,7 @@
             // 
             this.PanelEnemyNameBar.BackColor = System.Drawing.Color.Transparent;
             this.PanelEnemyNameBar.Controls.Add(this.lblHpenemy);
-            this.PanelEnemyNameBar.Controls.Add(this.lblenemy);
+            this.PanelEnemyNameBar.Controls.Add(this.lblenemyName);
             this.PanelEnemyNameBar.Controls.Add(this.progressBar2);
             this.PanelEnemyNameBar.Location = new System.Drawing.Point(0, 5);
             this.PanelEnemyNameBar.Margin = new System.Windows.Forms.Padding(4);
@@ -227,18 +227,18 @@
             this.lblHpenemy.TabIndex = 5;
             this.lblHpenemy.Text = "HP: 10/10";
             // 
-            // lblenemy
+            // lblenemyName
             // 
-            this.lblenemy.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblenemy.AutoSize = true;
-            this.lblenemy.BackColor = System.Drawing.Color.Transparent;
-            this.lblenemy.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblenemy.Location = new System.Drawing.Point(7, 28);
-            this.lblenemy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblenemy.Name = "lblenemy";
-            this.lblenemy.Size = new System.Drawing.Size(285, 53);
-            this.lblenemy.TabIndex = 4;
-            this.lblenemy.Text = "Charmander";
+            this.lblenemyName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblenemyName.AutoSize = true;
+            this.lblenemyName.BackColor = System.Drawing.Color.Transparent;
+            this.lblenemyName.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblenemyName.Location = new System.Drawing.Point(7, 28);
+            this.lblenemyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblenemyName.Name = "lblenemyName";
+            this.lblenemyName.Size = new System.Drawing.Size(223, 42);
+            this.lblenemyName.TabIndex = 4;
+            this.lblenemyName.Text = "Charmander";
             // 
             // PanelEnemy
             // 
@@ -316,6 +316,7 @@
             this.Controls.Add(this.PanelPokemon);
             this.Controls.Add(this.PanelTop);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StageForm";
@@ -351,13 +352,13 @@
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Panel PanelSkill;
         private System.Windows.Forms.Panel PanelEnemyNameBar;
-        private System.Windows.Forms.Label lblenemy;
+        private System.Windows.Forms.Label lblenemyName;
         private System.Windows.Forms.Panel PanelEnemy;
         private System.Windows.Forms.Panel PanelTop;
         private System.Windows.Forms.Panel PanelPokemon;
         private System.Windows.Forms.Button btnNhac;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPokemonName;
         private System.Windows.Forms.RichTextBox txtComment;
         private System.Windows.Forms.Label lblHpenemy;
         private System.Windows.Forms.Label lblHpPokemon;

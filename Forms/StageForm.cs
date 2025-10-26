@@ -30,18 +30,20 @@ namespace PokemonProject.Forms
         {
             InitializeComponent();
             pokemon_1 = selectedPokemon;
+            //pokemon_2 = pokemonboss;
         }
-        //public StageForm(Pokemon pokemonBoss)
-        //{
-        //    InitializeComponent();
-        //    pokemon_2 = pokemonBoss;
-        //}
+       
 
         private void Fight_Load(object sender, EventArgs e)
         {
 
-
+            //đổi theo pokemon
+            lblPokemonName.Text = pokemon_1.Name;
             pictureBoxPokemon.Image = pokemon_1.Image.Image;
+            skill1.Text = pokemon_1.Skill1.Name;
+            skill2.Text = pokemon_1.Skill2.Name;
+
+
 
             // Nhạc nền
             axWindowsMediaPlayer1.URL = Path.Combine(Application.StartupPath, "Resources/Audio/Fight.mp3");
