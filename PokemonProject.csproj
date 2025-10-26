@@ -82,6 +82,7 @@
     <Compile Include="Forms\PickStageForm.Designer.cs">
       <DependentUpon>PickStageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProcessor.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Systems.cs" />

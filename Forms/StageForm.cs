@@ -14,10 +14,20 @@ namespace PokemonProject.Forms
 {
     public partial class StageForm : Form
     {
-        Random random = new Random(); // 🔹 Sinh số ngẫu nhiên cho phản công
+        Random random = new Random(); // Sinh số ngẫu nhiên cho phản công
 
         private Pokemon pokemon_1;
+        public Pokemon Pokemon_1
+        {
+            get => pokemon_1;
+            set => pokemon_1 = value;
+        }
         private Pokemon pokemon_2;
+        public Pokemon Pokemon_2
+        {
+            get => pokemon_2;
+            set => pokemon_2 = value;
+        }
         private bool _unlock;
 
         public bool Unlock
@@ -26,10 +36,12 @@ namespace PokemonProject.Forms
             set => _unlock = value;
         }
 
-        public StageForm(Pokemon selectedPokemon)
+        public StageForm(bool state, Pokemon selectedPokemon, Pokemon pokemonBoss)
         {
             InitializeComponent();
+            Unlock = state;
             pokemon_1 = selectedPokemon;
+            pokemon_2 = pokemonBoss;
         }
         //public StageForm(Pokemon pokemonBoss)
         //{
@@ -147,6 +159,7 @@ namespace PokemonProject.Forms
                 txtComment.AppendText($"🎉 Đối thủ đã gục ngã! Bạn chiến thắng!\r\n");
                 await Task.Delay(800);
                 MessageBox.Show("🎉 Bạn đã chiến thắng!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 this.Close();
                 return;
             }

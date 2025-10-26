@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using PokemonProject.Models;
+using PokemonProject.Models.DataProcessor;
 using StageForm = PokemonProject.Forms.StageForm;
 
 namespace PokemonProject
@@ -20,30 +21,34 @@ namespace PokemonProject
     public partial class LoginForm : Form
     {
         Panel panelDangKy = new Panel();
-        private User _player;
 
+        #region  player
+        private User _player;
         public User Player
         {
             get => _player;
             set => _player = value;
         }
+        #endregion
 
-        private Pokemon[] _pokemons;
-
-        public Pokemon[] Pokemons
+        #region pokemons
+        private List<Pokemon> _pokemons = new List<Pokemon>();
+        public List<Pokemon> Pokemons
         {
             get => _pokemons;
             set => _pokemons = value;
         }
+        #endregion
 
-        private StageForm[] _stages;
-
-        public StageForm[] Stages
+        #region Stages
+        private List<StageForm> _stages = new List<StageForm>();
+        public List<StageForm> Stages
         {
             get => _stages;
             set => _stages = value;
         }
-        
+        #endregion
+
         #region các hàm giao diện
         private void Login_Resize(object sender, EventArgs e)
         {
@@ -54,6 +59,9 @@ namespace PokemonProject
 
         private void Login_Load(object sender, EventArgs e)
         {
+
+            LoadData();
+
             axWindowsMediaPlayer1.URL = Path.Combine(Application.StartupPath, "Resources/Audio/Littletown.mp3");
             axWindowsMediaPlayer1.settings.setMode("loop", true);
             axWindowsMediaPlayer1.Ctlcontrols.play();
@@ -99,72 +107,115 @@ namespace PokemonProject
             }
         }
 
+
         #endregion
+
+        private List<User> users;
+        public void LoadData()
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt");
+            users = DataReader.ReadUsersFrom(path);
+
+            Console.WriteLine($"Đọc file thành công, số lượng users: {users.Count}");
+
+            if (users.Count == 0)
+            {
+                Console.WriteLine("Không tìm thấy người dùng nào trong dữ liệu!");
+                return;
+            }
+
+            Player = users.Last();
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+
+            var lobby = new LobbyForm(Player);
+            lobby.FormClosed += (s, e) =>
+            {
+                this.Show();
+                lobby.Dispose();
+            }; // Giải phóng form hiện tại khi lobby đóng
+            lobby.ShowDialog();
+            this.Hide();
+        }
+
+        public void SaveData()
+        {
+            DataWriter.WriteUsersTo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt"), users);
+            Console.WriteLine("Luu thanh cong");
+        }
         public LoginForm()
         {
             InitializeComponent();
             // StageForm Stage1 = new StageForm()
         }
 
-        private void initPokemon()
+
+
+        ~LoginForm()
         {
-            Pokemons= new Pokemon[4];
-            Pokemons[0] = new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire,
-                new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
-            Pokemons[1] = new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass,
-                new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
-            Pokemons[2] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
-                new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.squirtleEnemy;
-            Pokemons[3] = new Pokemon("Pikachu", new PictureBox(), 100, Systems.Thunder,
-                new Skill("Dien 100k vol", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
-            Pokemons[3].Image.Image = global::PokemonProject.Properties.Resources.pikachuEnemy;
+            SaveData();
         }
 
-        private void initStageForm()
+        private void initPokemon(List<Pokemon> args)
         {
-            Stages = new StageForm[3];
-            Stages[0] = new StageForm(Pokemons[0]);
-            Stages[1] = new StageForm(Pokemons[1]);
-            Stages[2] = new StageForm(Pokemons[2]);
+            args.Add(new Pokemon("Charmander", new PictureBox(), 10, Systems.Fire,
+                new Skill("Phun lua", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
+            args[0].Image.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
+
+            args.Add(new Pokemon("Bulbasaur", new PictureBox(), 10, Systems.Grass,
+                new Skill("Bao la", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
+            args[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
+
+            args.Add(new Pokemon("Squirtle", new PictureBox(), 10, Systems.Water,
+                new Skill("Phun nuoc", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
+            args[2].Image.Image = global::PokemonProject.Properties.Resources.squirtleEnemy;
+
+            args.Add(new Pokemon("Pikachu", new PictureBox(), 10, Systems.Thunder,
+                new Skill("Dien 100k vol", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
+            args[3].Image.Image = global::PokemonProject.Properties.Resources.pikachuEnemy;
         }
 
+        private void initStageForms(List<StageForm> args, List<Pokemon> poke)
+        {
+            args.Add(new StageForm(true, null, poke[0]));
+            args.Add(new StageForm(false, null, poke[1]));
+            args.Add(new StageForm(false, null, poke[2]));
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            string userName = HoTen.Text.Trim();
+            if (HoTen.Text == null)
+                return;
 
-            // 1. Khởi tạo Pokémon và Stage nếu cần
-            if (Pokemons == null)
+            bool isFind = false;
+            foreach (var user in users)
             {
-                initPokemon();
-                initStageForm();
+                if (HoTen.Text == user.Name)
+                {
+                    Player = user;
+                    isFind = true;
+                    break;
+                }
             }
 
-            // 2. Kiểm tra dữ liệu người dùng gần nhất
-            User lastSavedUser = User.LoadLastUser(Pokemons, Stages);
-
-            //Kiểm tra tên có trùng không
-            if (lastSavedUser != null && lastSavedUser.Name.Equals(userName, StringComparison.OrdinalIgnoreCase))
+            if (isFind)
             {
-                // Tên trùng với người dùng cuối cùng đã lưu: Tải dữ liệu cũ
-                Player = lastSavedUser;
-            }
-            else
-            {
-                // Tên mới HOẶC tên không trùng với người dùng cuối cùng: Tạo User mới (HighestLevelUnlock = 0)
-                Player = new User(userName, Stages, Pokemons);
+                Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
+                LobbyForm lob = new LobbyForm(Player);
+                this.Hide();
+                SaveData();
+                axWindowsMediaPlayer1.Ctlcontrols.stop();
+                return;
             }
 
-            // 3. Gán User hiện tại cho biến toàn cục và Lưu/Cập nhật dữ liệu
-            Program.CurrentUser = Player;
-            Player.SaveUserData(); // Ghi đè file với dữ liệu người chơi hiện tại (Đã fix trong User.cs)
-
-            // 4. Chuyển sang Lobby
-            LobbyForm s = new LobbyForm(Player);
-            s.Show();
+            initPokemon(Pokemons);
+            initStageForms(Stages, Pokemons);
+            users.Add(new User(HoTen.Text, Stages, Pokemons));
+            Player = users[users.Count - 1];
+            //  Chuyển sang Lobby
+            Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
+            LobbyForm lobby = new LobbyForm(Player);
+            lobby.Show();
             this.Hide();
+            SaveData();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
 
@@ -174,9 +225,9 @@ namespace PokemonProject
             {
                 axWindowsMediaPlayer1.Ctlcontrols.pause();
                 btnNhac.Text = "🔇";
-                
+
             }
-            else if(axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsPaused)
+            else if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
                 axWindowsMediaPlayer1.Ctlcontrols.play();
                 btnNhac.Text = "🔊";

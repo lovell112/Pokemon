@@ -27,11 +27,11 @@ namespace PokemonProject.Forms
             Pokemons[0] = new Pokemon("Charmander", new PictureBox(), 100, Systems.Fire,
                 new Skill("Phun lua", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
             Pokemons[0].Image.Image = global::PokemonProject.Properties.Resources.Charmande;
-            
+
             Pokemons[1] = new Pokemon("Bulbasaur", new PictureBox(), 100, Systems.Grass,
                 new Skill("Bao la", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
             Pokemons[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
-            
+
             Pokemons[2] = new Pokemon("Squirtle", new PictureBox(), 100, Systems.Water,
                 new Skill("Phun nuoc", 10, new PictureBox()), new Skill("Tan Cong Toc Do", 5, new PictureBox()));
             Pokemons[2].Image.Image = global::PokemonProject.Properties.Resources.Squirtle;
@@ -44,11 +44,9 @@ namespace PokemonProject.Forms
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Charmander không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) {
-                Program.CurrentUser.Pokemon = this.Pokemons.FirstOrDefault(p => p.Name == "Charmander");
-                Program.CurrentUser.SaveUserData(); // Lưu lại vào txt
-
-                StageForm fightForm = new StageForm(Program.CurrentUser.Pokemon);
+            if (result == DialogResult.Yes)
+            {
+                StageForm fightForm = new StageForm(true, Pokemons[0], Pokemons[0]);
                 fightForm.Show();
                 this.Close();
             }
@@ -59,10 +57,7 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Bulbasaur không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Program.CurrentUser.Pokemon = this.Pokemons.FirstOrDefault(p => p.Name == "Bulbasaur");
-                Program.CurrentUser.SaveUserData(); // Lưu lại vào txt
-
-                StageForm fightForm = new StageForm(Program.CurrentUser.Pokemon);
+                StageForm fightForm = new StageForm(true, Pokemons[1], Pokemons[0]);
                 fightForm.Show();
                 this.Close();
             }
@@ -73,10 +68,7 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Squirtle không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Program.CurrentUser.Pokemon = this.Pokemons.FirstOrDefault(p => p.Name == "Squirtle");
-                Program.CurrentUser.SaveUserData(); // Lưu lại vào txt
-
-                StageForm fightForm = new StageForm(Program.CurrentUser.Pokemon);
+                StageForm fightForm = new StageForm(true, Pokemons[2], Pokemons[0]);
                 fightForm.Show();
                 this.Close();
             }
@@ -87,18 +79,10 @@ namespace PokemonProject.Forms
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Pikachu không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Program.CurrentUser.Pokemon = this.Pokemons.FirstOrDefault(p => p.Name == "Pikachu");
-                Program.CurrentUser.SaveUserData(); // Lưu lại vào TXT
-
-                StageForm fightForm = new StageForm(Program.CurrentUser.Pokemon);
+                StageForm fightForm = new StageForm(true, Pokemons[3], Pokemons[0]);
                 fightForm.Show();
                 this.Close();
             }
-        }
-
-        private void PickPokemonForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

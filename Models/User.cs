@@ -10,7 +10,7 @@ namespace PokemonProject.Models
     public class User
     {
         #region Constructor
-        public User(string name, StageForm[] initialStages, Pokemon[] initialPokemons)
+        public User(string name, List<StageForm> initialStages, List<Pokemon> initialPokemons)
         {
             Name = name;
             Stageses = initialStages;
@@ -18,7 +18,7 @@ namespace PokemonProject.Models
             HighestLevelUnlock = 1;
         }
         #endregion
-        
+
         #region get - set
         private string _name;
         public string Name
@@ -34,30 +34,30 @@ namespace PokemonProject.Models
             set => _highestLevelUnlock = value;
         }
 
-        private StageForm[] _stageses;
-        public StageForm[] Stageses
+        private List<StageForm> _stageses;
+        public List<StageForm> Stageses
         {
             get => _stageses;
             set => _stageses = value;
         }
 
-        private Pokemon _pokemon;
-        public Pokemon Pokemon
+        private Pokemon _selectedPokemon;
+        public Pokemon SelectedPokemon
         {
-            get => _pokemon;
-            set => _pokemon = value;
+            get => _selectedPokemon;
+            set => _selectedPokemon = value;
         }
 
-        private Pokemon[] _pokemons;
+        private List<Pokemon> _pokemons;
 
-        public Pokemon[] Pokemons
+        public List<Pokemon> Pokemons
         {
             get => _pokemons;
             set => _pokemons = value;
         }
 
-        private PickStageForm _selectedStage;
-        public PickStageForm SelectedStage
+        private StageForm _selectedStage;
+        public StageForm SelectedStage
         {
             get => _selectedStage;
             set => _selectedStage = value;
@@ -67,10 +67,10 @@ namespace PokemonProject.Models
         #region Methods
         public void PickPokemon(Pokemon pokemon)
         {
-            _pokemon = pokemon;
+            _selectedPokemon = pokemon;
         }
 
-        public void PickStage(PickStageForm stage)
+        public void PickStage(StageForm stage)
         {
             _selectedStage = stage;
             stage.Show();
@@ -85,54 +85,14 @@ namespace PokemonProject.Models
         {
             try
             {
-                // 🎯 SỬA: Sử dụng File.WriteAllText để GHI ĐÈ, đảm bảo chỉ lưu trạng thái mới nhất
-                string line = $"{Name}|{Pokemon?.Name}|{HighestLevelUnlock}";
+                // Sử dụng File.WriteAllText để GHI ĐÈ, đảm bảo chỉ lưu trạng thái mới nhất
+                string line = $"{Name}|{SelectedPokemon?.Name}|{HighestLevelUnlock}";
                 File.WriteAllText(UserDataPath, line);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi lưu dữ liệu người dùng: {ex.Message}");
             }
-        }
-        #endregion
-
-        #region Đọc tên người dùng gần nhất từ file txt
-        public static User LoadLastUser(Pokemon[] availablePokemons, StageForm[] availableStages)
-        {
-            try
-            {
-                if (File.Exists(UserDataPath))
-                {
-                    // 🎯 SỬA: Đọc toàn bộ nội dung file (chỉ 1 dòng duy nhất sau khi SaveUserData được sửa)
-                    string line = File.ReadAllText(UserDataPath).Trim();
-                    if (!string.IsNullOrEmpty(line))
-                    {
-                        string[] parts = line.Split('|');
-                        if (parts.Length == 3)
-                        {
-                            string name = parts[0];
-                            string pokemonName = parts[1];
-                            int stage = int.Parse(parts[2]);
-
-                            User user = new User(name, availableStages, availablePokemons);
-                            user.HighestLevelUnlock = stage;
-
-                            // ... (Giữ nguyên logic gán Pokemon)
-                            if (!string.IsNullOrEmpty(pokemonName))
-                            {
-                                user.Pokemon = availablePokemons.FirstOrDefault(p => p.Name == pokemonName);
-                            }
-
-                            return user;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi đọc dữ liệu người dùng: {ex.Message}");
-            }
-            return null;
         }
         #endregion
 

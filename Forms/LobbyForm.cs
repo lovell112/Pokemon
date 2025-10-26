@@ -161,11 +161,10 @@ namespace PokemonProject.Forms
 
             if (result == DialogResult.Yes)
             {
-                // Quay lại form Login
-                LoginForm loginForm = new LoginForm();
-                loginForm.Show();
+                LoginForm loginForm = new LoginForm(); 
+                loginForm.Show(); 
+                this.Hide(); 
                 axWindowsMediaPlayer1.Ctlcontrols.pause();
-                this.Hide();
             }
         }
     }
