@@ -130,11 +130,23 @@ namespace PokemonProject.Forms
 
         private void Play_Click(object sender, EventArgs e)
         {
-            PickStageForm pickStageForm = new PickStageForm(Player);
-            pickStageForm.FormClosed += (s, args) => this.Show();
-            pickStageForm.Show();
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
-            this.Hide();
+            using (var pickStageForm = new PickStageForm(Player))
+            {
+                pickStageForm.FormClosed += (s, args) =>
+                {
+                    // When pickStageForm closes, restore the lobby and resume music
+                    this.Show();
+                    try { axWindowsMediaPlayer1.Ctlcontrols.play(); }
+                    catch { /* ignore if media player is disposed/unavailable */ }
+                };
+
+                // Ẩn lobby và dừng nhạc nền khi mở pickStageForm
+                try { axWindowsMediaPlayer1.Ctlcontrols.pause(); }
+                catch { /* ignore */ }
+
+                this.Hide();
+                pickStageForm.ShowDialog(this);
+            }
         }
 
         private void btnNhac_Click(object sender, EventArgs e)
