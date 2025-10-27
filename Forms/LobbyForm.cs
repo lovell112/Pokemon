@@ -161,10 +161,21 @@ namespace PokemonProject.Forms
 
             if (result == DialogResult.Yes)
             {
-                LoginForm loginForm = new LoginForm(); 
-                loginForm.Show(); 
-                this.Hide(); 
-                axWindowsMediaPlayer1.Ctlcontrols.pause();
+                // Kiểm tra trong danh sách form đang mở (OpenForms) có LoginForm nào chưa
+                var existingLogin = Application.OpenForms.OfType<LoginForm>().FirstOrDefault();
+                if (existingLogin == null)
+                {
+                    existingLogin = new LoginForm();
+                    existingLogin.Show();
+                }
+                else
+                {
+                    existingLogin.Show();
+                    existingLogin.BringToFront(); 
+                }
+
+                axWindowsMediaPlayer1.Ctlcontrols.pause(); // Dừng nhạc nền khi đăng xuất
+                this.Close(); // Đóng LobbyForm
             }
         }
     }

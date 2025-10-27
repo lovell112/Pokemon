@@ -198,9 +198,23 @@ namespace PokemonProject
 
             if (isFind)
             {
-                Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
+                //Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
+                // Mở Lobby Form nếu tìm thấy user đã tồn tại trong danh sách users 
                 LobbyForm lob = new LobbyForm(Player);
+                lob.FormClosed += (s, args) => {
+                    this.Show();
+                    try
+                    {
+                        axWindowsMediaPlayer1.Ctlcontrols.play(); // Phát lại nhạc nền khi trở về từ Lobby
+                    }
+                    catch
+                    {
+                        // Không làm gì nếu không thể phát nhạc
+                    }
+                    lob.Dispose();
+                };
                 this.Hide();
+                lob.Show();
                 SaveData();
                 axWindowsMediaPlayer1.Ctlcontrols.stop();
                 return;
@@ -213,8 +227,21 @@ namespace PokemonProject
             //  Chuyển sang Lobby
             Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
             LobbyForm lobby = new LobbyForm(Player);
-            lobby.Show();
+            lobby.FormClosed += (s, args) =>
+            {
+                this.Show();
+                try
+                {
+                    axWindowsMediaPlayer1.Ctlcontrols.play(); // Phát lại nhạc nền khi trở về từ Lobby
+                }
+                catch
+                {
+                    // Không làm gì nếu không thể phát nhạc
+                }
+                lobby.Dispose(); // Giải phóng form hiện tại khi lobby đóng
+            };
             this.Hide();
+            lobby.Show();
             SaveData();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
