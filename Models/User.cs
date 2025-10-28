@@ -10,16 +10,57 @@ namespace PokemonProject.Models
     public class User
     {
         #region Constructor
-        public User(string name, List<StageForm> initialStages, List<Pokemon> initialPokemons)
+        public User(string name)
         {
             Name = name;
-            Stageses = initialStages;
-            Pokemons = initialPokemons;
-            HighestLevelUnlock = 1;
+            Level = new List<string>();
+            Level.Add("null");
+            Level.Add("null");
+            Level.Add("null");
+            Level.Add("null");
+            Man1 = true;
+            Man2 = false;
+            Man3 = false;
+            Manserect = false;
         }
         #endregion
 
         #region get - set
+
+        private bool _man1;
+
+        public bool Man1
+        {   
+            get => _man1;
+            set => _man1 = value;
+        }
+
+        private bool _man2;
+
+        public bool Man2
+        {
+            get => _man2;
+            set => _man2 = value;
+        }
+
+        private bool _man3;
+
+        public bool Man3
+        {
+            get => _man3;
+            set => _man3 = value;
+        }
+
+        private bool _manserect;
+
+        public bool Manserect
+        {
+            get => _manserect;
+            set => _manserect = value;
+        }
+
+
+
         private string _name;
         public string Name
         {
@@ -27,72 +68,11 @@ namespace PokemonProject.Models
             set => _name = value;
         }
 
-        private int _highestLevelUnlock;
-        public int HighestLevelUnlock
+        private List<string> _level;
+        public List<string> Level
         {
-            get => _highestLevelUnlock;
-            set => _highestLevelUnlock = value;
-        }
-
-        private List<StageForm> _stageses;
-        public List<StageForm> Stageses
-        {
-            get => _stageses;
-            set => _stageses = value;
-        }
-
-        private Pokemon _selectedPokemon;
-        public Pokemon SelectedPokemon
-        {
-            get => _selectedPokemon;
-            set => _selectedPokemon = value;
-        }
-
-        private List<Pokemon> _pokemons;
-
-        public List<Pokemon> Pokemons
-        {
-            get => _pokemons;
-            set => _pokemons = value;
-        }
-
-        private StageForm _selectedStage;
-        public StageForm SelectedStage
-        {
-            get => _selectedStage;
-            set => _selectedStage = value;
-        }
-        #endregion
-
-        #region Methods
-        public void PickPokemon(Pokemon pokemon)
-        {
-            _selectedPokemon = pokemon;
-        }
-
-        public void PickStage(StageForm stage)
-        {
-            _selectedStage = stage;
-            stage.Show();
-        }
-        #endregion
-
-
-        private static readonly string UserDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt"); //đường dẫn thư mục đang chạy chương trình
-
-        #region Lưu tên người dùng hiện tại
-        public void SaveUserData()
-        {
-            try
-            {
-                // Sử dụng File.WriteAllText để GHI ĐÈ, đảm bảo chỉ lưu trạng thái mới nhất
-                string line = $"{Name}|{SelectedPokemon?.Name}|{HighestLevelUnlock}";
-                File.WriteAllText(UserDataPath, line);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lưu dữ liệu người dùng: {ex.Message}");
-            }
+            get => _level;
+            set => _level = value;
         }
         #endregion
 

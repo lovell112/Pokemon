@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ScoreboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScoreboardForm.Designer.cs">
+      <DependentUpon>ScoreboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PickPokemonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,11 +64,11 @@
     <Compile Include="Forms\EndForm.Designer.cs">
       <DependentUpon>EndForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StageForm.cs">
+    <Compile Include="Forms\StageForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StageForm.Designer.cs">
-      <DependentUpon>StageForm.cs</DependentUpon>
+    <Compile Include="Forms\StageForm1.Designer.cs">
+      <DependentUpon>StageForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LobbyForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +88,24 @@
     <Compile Include="Forms\PickStageForm.Designer.cs">
       <DependentUpon>PickStageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StageForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageForm2.Designer.cs">
+      <DependentUpon>StageForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StageForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageForm3.Designer.cs">
+      <DependentUpon>StageForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StageFormSerect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StageFormSerect.Designer.cs">
+      <DependentUpon>StageFormSerect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataProcessor.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -96,8 +120,11 @@
     <EmbeddedResource Include="Forms\EndForm.resx">
       <DependentUpon>EndForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StageForm.resx">
-      <DependentUpon>StageForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ScoreboardForm.resx">
+      <DependentUpon>ScoreboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageForm1.resx">
+      <DependentUpon>StageForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LobbyForm.resx">
       <DependentUpon>LobbyForm.cs</DependentUpon>
@@ -107,6 +134,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PickStageForm.resx">
       <DependentUpon>PickStageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageForm2.resx">
+      <DependentUpon>StageForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageForm3.resx">
+      <DependentUpon>StageForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StageFormSerect.resx">
+      <DependentUpon>StageFormSerect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +186,16 @@
     <None Include="Resources\Images\R.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Images\squirtle.png" />
+    <None Include="Resources\Images\pikachuu.png" />
+    <None Include="Resources\Images\Charmande.png" />
+    <None Include="Resources\Sky.jpg" />
+    <None Include="Resources\ice.png" />
+    <None Include="Resources\Lava.jpg" />
+    <None Include="Resources\Lugia.gif" />
+    <None Include="Resources\Zapdos.gif" />
+    <None Include="Resources\Moltres.gif" />
+    <None Include="Resources\Articuno.gif" />
     <Content Include="Resources\Audio\Littletown.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

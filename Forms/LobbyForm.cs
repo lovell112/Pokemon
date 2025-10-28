@@ -24,11 +24,18 @@ namespace PokemonProject.Forms
             set => _player = value;
         }
 
-        public LobbyForm(User player)
+        private List<User> _players = new List<User>();
+        public List<User> Players
+        {
+            get => _players;
+            set => _players = value;
+        }
+        public LobbyForm(User player, List<User> players)
         {
             InitializeComponent();
             this.Resize += Sanh_Resize; // Gọi lại khi thay đổi kích thước
             Player = player;
+            Players = players;
         }
         #region hàm giao diện
         private void Form1_Load(object sender, EventArgs e)
@@ -130,23 +137,10 @@ namespace PokemonProject.Forms
 
         private void Play_Click(object sender, EventArgs e)
         {
-            using (var pickStageForm = new PickStageForm(Player))
-            {
-                pickStageForm.FormClosed += (s, args) =>
-                {
-                    // When pickStageForm closes, restore the lobby and resume music
-                    this.Show();
-                    try { axWindowsMediaPlayer1.Ctlcontrols.play(); }
-                    catch { /* ignore if media player is disposed/unavailable */ }
-                };
-
-                // Ẩn lobby và dừng nhạc nền khi mở pickStageForm
-                try { axWindowsMediaPlayer1.Ctlcontrols.pause(); }
-                catch { /* ignore */ }
-
-                this.Hide();
-                pickStageForm.ShowDialog(this);
-            }
+            PickStageForm pickStageForm = new PickStageForm(Player, Players);
+            pickStageForm.Show();
+            axWindowsMediaPlayer1.Ctlcontrols.pause();
+            // this.Hide();
         }
 
         private void btnNhac_Click(object sender, EventArgs e)
@@ -189,6 +183,12 @@ namespace PokemonProject.Forms
                 axWindowsMediaPlayer1.Ctlcontrols.pause(); // Dừng nhạc nền khi đăng xuất
                 this.Close(); // Đóng LobbyForm
             }
+        }
+
+        private void btnOpenScore_Click(object sender, EventArgs e)
+        {
+            ScoreboardForm scoreBoard = new ScoreboardForm(Players);
+            scoreBoard.Show();
         }
     }
 }

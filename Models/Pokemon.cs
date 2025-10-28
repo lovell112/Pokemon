@@ -15,14 +15,14 @@ namespace PokemonProject.Models
     {
         private string _Name;
         private PictureBox _Image;
-        private double _HP;
+        private int _HP;
         private Systems _System;
 
         public Skill Skill1 { get; set; }
         public Skill Skill2 { get; set; }
 
 
-        public Pokemon(string name, PictureBox image, double hp, Systems system, Skill skill1, Skill skill2)
+        public Pokemon(string name, PictureBox image, int hp, Systems system, Skill skill1, Skill skill2)
         {
             _Name = name;
             _Image = image;
@@ -42,7 +42,7 @@ namespace PokemonProject.Models
             get { return _Image; }
             set { _Image = value; }
         }
-        public double HP
+        public int HP
         {
             get { return _HP; }
             set { _HP = value; }
@@ -53,21 +53,7 @@ namespace PokemonProject.Models
             set { _System = value; }
         }
 
-        public void Attack(Pokemon target)
-        {
-            double damage = Skill1.Damage;
-            if (IsCounter(target))
-            {
-                damage *= 2;
-            }
-            else if (target.IsCounter(this))
-            {
-                damage *= 0.5;
-            }
-
-            target.HP -= damage;
-            if (target.HP < 0) target.HP = 0;
-        }
+      
 
         public bool IsCounter(Pokemon target)
         {

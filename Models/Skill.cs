@@ -11,8 +11,8 @@ namespace PokemonProject.Models
             set => _name = value;
         }
 
-        private float _damage;
-        public float Damage
+        private int _damage;
+        public int Damage
         {
             get => _damage;
             set
@@ -31,7 +31,7 @@ namespace PokemonProject.Models
             set => _image = value;
         }
 
-        public Skill(string name, float damage, PictureBox image)
+        public Skill(string name, int damage, PictureBox image)
         {
             Name = name;
             Damage = damage;

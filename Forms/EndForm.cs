@@ -19,7 +19,7 @@ namespace PokemonProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Son lo xnxx
+            
             this.Close();
         }
     }

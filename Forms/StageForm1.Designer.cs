@@ -1,6 +1,6 @@
 ﻿namespace PokemonProject.Forms
 {
-    partial class StageForm
+    partial class StageForm1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StageForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StageForm1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblHpPokemon = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPokemonName = new System.Windows.Forms.Label();
             this.PanelSkill = new System.Windows.Forms.Panel();
             this.skill1 = new System.Windows.Forms.Button();
             this.skill2 = new System.Windows.Forms.Button();
@@ -49,6 +49,7 @@
             this.txtComment = new System.Windows.Forms.RichTextBox();
             this.btnNhac = new System.Windows.Forms.Button();
             this.PanelPokemon = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PanelSkill.SuspendLayout();
@@ -79,7 +80,7 @@
             // 
             this.panel1.Controls.Add(this.lblHpPokemon);
             this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblPokemonName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(4, 19);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -106,18 +107,18 @@
             this.progressBar1.Size = new System.Drawing.Size(637, 55);
             this.progressBar1.TabIndex = 2;
             // 
-            // label1
+            // lblPokemonName
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(201, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 53);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Balbasaur";
+            this.lblPokemonName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblPokemonName.AutoSize = true;
+            this.lblPokemonName.BackColor = System.Drawing.Color.Transparent;
+            this.lblPokemonName.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblPokemonName.Location = new System.Drawing.Point(145, 53);
+            this.lblPokemonName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPokemonName.Name = "lblPokemonName";
+            this.lblPokemonName.Size = new System.Drawing.Size(230, 53);
+            this.lblPokemonName.TabIndex = 7;
+            this.lblPokemonName.Text = "Balbasaur";
             // 
             // PanelSkill
             // 
@@ -164,7 +165,7 @@
             this.pictureBoxPokemon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxPokemon.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPokemon.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
-            this.pictureBoxPokemon.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPokemon.Location = new System.Drawing.Point(0, -102);
             this.pictureBoxPokemon.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPokemon.Name = "pictureBoxPokemon";
             this.pictureBoxPokemon.Size = new System.Drawing.Size(543, 395);
@@ -175,11 +176,11 @@
             // pictureBoxEnemy
             // 
             this.pictureBoxEnemy.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxEnemy.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
-            this.pictureBoxEnemy.Location = new System.Drawing.Point(0, 119);
+            this.pictureBoxEnemy.Image = global::PokemonProject.Properties.Resources.Moltres;
+            this.pictureBoxEnemy.Location = new System.Drawing.Point(-24, 119);
             this.pictureBoxEnemy.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxEnemy.Name = "pictureBoxEnemy";
-            this.pictureBoxEnemy.Size = new System.Drawing.Size(455, 252);
+            this.pictureBoxEnemy.Size = new System.Drawing.Size(479, 316);
             this.pictureBoxEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxEnemy.TabIndex = 1;
             this.pictureBoxEnemy.TabStop = false;
@@ -206,7 +207,7 @@
             // 
             // PanelEnemyNameBar
             // 
-            this.PanelEnemyNameBar.BackColor = System.Drawing.Color.Transparent;
+            this.PanelEnemyNameBar.BackColor = System.Drawing.Color.Red;
             this.PanelEnemyNameBar.Controls.Add(this.lblHpenemy);
             this.PanelEnemyNameBar.Controls.Add(this.lblenemy);
             this.PanelEnemyNameBar.Controls.Add(this.progressBar2);
@@ -220,10 +221,10 @@
             // 
             this.lblHpenemy.BackColor = System.Drawing.Color.Transparent;
             this.lblHpenemy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHpenemy.Location = new System.Drawing.Point(299, 39);
+            this.lblHpenemy.Location = new System.Drawing.Point(259, 39);
             this.lblHpenemy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHpenemy.Name = "lblHpenemy";
-            this.lblHpenemy.Size = new System.Drawing.Size(140, 41);
+            this.lblHpenemy.Size = new System.Drawing.Size(180, 41);
             this.lblHpenemy.TabIndex = 5;
             this.lblHpenemy.Text = "HP: 10/10";
             // 
@@ -233,12 +234,12 @@
             this.lblenemy.AutoSize = true;
             this.lblenemy.BackColor = System.Drawing.Color.Transparent;
             this.lblenemy.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblenemy.Location = new System.Drawing.Point(7, 28);
+            this.lblenemy.Location = new System.Drawing.Point(38, 27);
             this.lblenemy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblenemy.Name = "lblenemy";
-            this.lblenemy.Size = new System.Drawing.Size(285, 53);
+            this.lblenemy.Size = new System.Drawing.Size(179, 53);
             this.lblenemy.TabIndex = 4;
-            this.lblenemy.Text = "Charmander";
+            this.lblenemy.Text = "Moltres";
             // 
             // PanelEnemy
             // 
@@ -256,6 +257,7 @@
             // PanelTop
             // 
             this.PanelTop.BackColor = System.Drawing.Color.Transparent;
+            this.PanelTop.Controls.Add(this.button1);
             this.PanelTop.Controls.Add(this.txtComment);
             this.PanelTop.Controls.Add(this.btnNhac);
             this.PanelTop.Controls.Add(this.PanelEnemy);
@@ -264,7 +266,7 @@
             this.PanelTop.Location = new System.Drawing.Point(0, 0);
             this.PanelTop.Margin = new System.Windows.Forms.Padding(4);
             this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(1924, 362);
+            this.PanelTop.Size = new System.Drawing.Size(1924, 464);
             this.PanelTop.TabIndex = 7;
             this.PanelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelTop_Paint);
             // 
@@ -299,27 +301,38 @@
             this.PanelPokemon.BackColor = System.Drawing.Color.Transparent;
             this.PanelPokemon.Controls.Add(this.pictureBoxPokemon);
             this.PanelPokemon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelPokemon.Location = new System.Drawing.Point(0, 362);
+            this.PanelPokemon.Location = new System.Drawing.Point(0, 464);
             this.PanelPokemon.Margin = new System.Windows.Forms.Padding(4);
             this.PanelPokemon.Name = "PanelPokemon";
-            this.PanelPokemon.Size = new System.Drawing.Size(1924, 395);
+            this.PanelPokemon.Size = new System.Drawing.Size(1924, 293);
             this.PanelPokemon.TabIndex = 8;
             // 
-            // StageForm
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(531, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 52);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Skip";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // StageForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.BackgroundImage = global::PokemonProject.Properties.Resources.Fight;
+            this.BackgroundImage = global::PokemonProject.Properties.Resources.Lava;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.skill1;
             this.ClientSize = new System.Drawing.Size(1924, 1001);
             this.Controls.Add(this.PanelPokemon);
             this.Controls.Add(this.PanelTop);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "StageForm";
+            this.Name = "StageForm1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fight";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -358,9 +371,10 @@
         private System.Windows.Forms.Panel PanelPokemon;
         private System.Windows.Forms.Button btnNhac;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPokemonName;
         private System.Windows.Forms.RichTextBox txtComment;
         private System.Windows.Forms.Label lblHpenemy;
         private System.Windows.Forms.Label lblHpPokemon;
+        private System.Windows.Forms.Button button1;
     }
 }

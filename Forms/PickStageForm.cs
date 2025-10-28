@@ -13,6 +13,7 @@ namespace PokemonProject.Forms
         private bool stage1Completed = false;
         private bool stage2Completed = false;
 
+
         private User _player;
         public User Player
         {
@@ -20,45 +21,38 @@ namespace PokemonProject.Forms
             set => _player = value;
         }
 
-        private List<StageForm> _stages;
+        private List<User> _players = new List<User>();
+        public List<User> Players
+        {
+            get => _players;
+            set => _players = value;
+        }
 
-        public List<StageForm> Stages
+
+        private List<StageForm1> _stages;
+
+        public List<StageForm1> Stages
         {
             get => _stages;
             set => _stages = value;
         }
 
-        public PickStageForm(User player)
+        public PickStageForm(User player, List<User> players)
         {
             InitializeComponent();
-            Stages = player.Stageses;
+            Player = player;
+            Players = players;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PickPokemonForm poke = new PickPokemonForm();
-            poke.Show();
-            this.Enabled = false;
-            poke.FormClosed += (s, args) =>
-            {
-                this.Enabled = true; // Mở lại form chính
-            };
-        }
-
-        private void Manchoi_Load(object sender, EventArgs e)
+        private void PickStage_Load(object sender, EventArgs e)
         {
             SetupPictureBoxHover(pictureBox1);
             SetupPictureBoxHover(pictureBox2);
             SetupPictureBoxHover(pictureBox3);
 
             // Chỉ cho màn 1 được chọn lúc đầu
-            pictureBox1.Enabled = true;
-            pictureBox2.Enabled = false;
-            pictureBox3.Enabled = false;
-
-            pictureBox2.BackColor = Color.Gray;
-            pictureBox3.BackColor = Color.Gray;
         }
+
 
         // 🧩 Hiệu ứng hover rung nhẹ
         private void SetupPictureBoxHover(PictureBox pb)
@@ -93,46 +87,42 @@ namespace PokemonProject.Forms
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (!pictureBox1.Enabled) return;
-
-            PickPokemonForm poke = new PickPokemonForm();
+            PickPokemonForm poke = new PickPokemonForm(1,Player, Players);
             poke.Show();
-
-            poke.FormClosed += (s, args) =>
-            {
-                stage1Completed = true;
-                pictureBox2.Enabled = true;
-                pictureBox2.BackColor = Color.Transparent;
-            };
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (!stage1Completed)
+            if (!Player.Man2)
             {
                 MessageBox.Show("⚠️ Bạn phải hoàn thành Màn 1 trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            PickPokemonForm poke = new PickPokemonForm();
+            PickPokemonForm poke = new PickPokemonForm(2,Player, Players);
             poke.Show();
-
-            poke.FormClosed += (s, args) =>
-            {
-                stage2Completed = true;
-                pictureBox3.Enabled = true;
-                pictureBox3.BackColor = Color.Transparent;
-            };
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if (!stage2Completed)
+            if (!Player.Man3)
             {
                 MessageBox.Show("⚠️ Bạn phải hoàn thành Màn 2 trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            PickPokemonForm poke = new PickPokemonForm();
+            PickPokemonForm poke = new PickPokemonForm(3, Player, Players);
+            poke.Show();
+        }
+
+        private void btnSecrect_Click(object sender, EventArgs e)
+        {
+            if (!Player.Manserect)
+            {
+                MessageBox.Show("⚠️ Bạn phải hoàn thành Màn 3 trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            PickPokemonForm poke = new PickPokemonForm(4, Player, Players);
             poke.Show();
         }
     }

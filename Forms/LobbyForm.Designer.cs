@@ -35,6 +35,7 @@
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnNhac = new System.Windows.Forms.Button();
             this.linkLabelLogout = new System.Windows.Forms.LinkLabel();
+            this.btnOpenScore = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(363, 166);
             this.Play.TabIndex = 0;
-            this.Play.Text = "Chơi Ngay";
+            this.Play.Text = "CHƠI NGAY";
             this.Play.UseVisualStyleBackColor = true;
             this.Play.Click += new System.EventHandler(this.Play_Click);
             // 
@@ -58,7 +59,7 @@
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(212, 78);
             this.Exit.TabIndex = 1;
-            this.Exit.Text = "Thoát";
+            this.Exit.Text = "THOÁT";
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -106,6 +107,17 @@
             this.linkLabelLogout.Text = "ádasd";
             this.linkLabelLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogout_LinkClicked);
             // 
+            // btnOpenScore
+            // 
+            this.btnOpenScore.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenScore.Location = new System.Drawing.Point(12, 171);
+            this.btnOpenScore.Name = "btnOpenScore";
+            this.btnOpenScore.Size = new System.Drawing.Size(144, 64);
+            this.btnOpenScore.TabIndex = 8;
+            this.btnOpenScore.Text = "Mở Scoreboard";
+            this.btnOpenScore.UseVisualStyleBackColor = true;
+            this.btnOpenScore.Click += new System.EventHandler(this.btnOpenScore_Click);
+            // 
             // LobbyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -113,6 +125,7 @@
             this.BackgroundImage = global::PokemonProject.Properties.Resources.R1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1312, 752);
+            this.Controls.Add(this.btnOpenScore);
             this.Controls.Add(this.linkLabelLogout);
             this.Controls.Add(this.btnNhac);
             this.Controls.Add(this.axWindowsMediaPlayer1);
@@ -133,6 +146,8 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.Button btnOpenScore;
 
         #endregion
 

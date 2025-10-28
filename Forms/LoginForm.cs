@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using PokemonProject.Models;
 using PokemonProject.Models.DataProcessor;
-using StageForm = PokemonProject.Forms.StageForm;
+using StageForm1 = PokemonProject.Forms.StageForm1;
 
 namespace PokemonProject
 {
@@ -31,21 +31,13 @@ namespace PokemonProject
         }
         #endregion
 
-        #region pokemons
-        private List<Pokemon> _pokemons = new List<Pokemon>();
-        public List<Pokemon> Pokemons
+        
+        #region listPlayers
+        private List<User> _players = new List<User>();
+        public List<User> Players
         {
-            get => _pokemons;
-            set => _pokemons = value;
-        }
-        #endregion
-
-        #region Stages
-        private List<StageForm> _stages = new List<StageForm>();
-        public List<StageForm> Stages
-        {
-            get => _stages;
-            set => _stages = value;
+            get => _players;
+            set => _players = value;
         }
         #endregion
 
@@ -59,8 +51,6 @@ namespace PokemonProject
 
         private void Login_Load(object sender, EventArgs e)
         {
-
-            LoadData();
 
             axWindowsMediaPlayer1.URL = Path.Combine(Application.StartupPath, "Resources/Audio/Littletown.mp3");
             axWindowsMediaPlayer1.settings.setMode("loop", true);
@@ -110,123 +100,22 @@ namespace PokemonProject
 
         #endregion
 
-        private List<User> users;
-        public void LoadData()
-        {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt");
-            users = DataReader.ReadUsersFrom(path);
-
-            Console.WriteLine($"Đọc file thành công, số lượng users: {users.Count}");
-
-            if (users.Count == 0)
-            {
-                Console.WriteLine("Không tìm thấy người dùng nào trong dữ liệu!");
-                return;
-            }
-
-            Player = users.Last();
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
-
-            var lobby = new LobbyForm(Player);
-            lobby.FormClosed += (s, e) =>
-            {
-                this.Show();
-                lobby.Dispose();
-            }; // Giải phóng form hiện tại khi lobby đóng
-            lobby.ShowDialog();
-            this.Hide();
-        }
-
-        public void SaveData()
-        {
-            DataWriter.WriteUsersTo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User_Data.txt"), users);
-            Console.WriteLine("Luu thanh cong");
-        }
+      
         public LoginForm()
         {
             InitializeComponent();
-            // StageForm Stage1 = new StageForm()
+            Player = new User(HoTen.Text.Trim());
+            Players = DataReader.ReadUsersFrom("Scoreboard.txt");
+            Players.Add(Player);
         }
 
-
-
-        ~LoginForm()
-        {
-            SaveData();
-        }
-
-        private void initPokemon(List<Pokemon> args)
-        {
-            args.Add(new Pokemon("Charmander", new PictureBox(), 10, Systems.Fire,
-                new Skill("Phun lua", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
-            args[0].Image.Image = global::PokemonProject.Properties.Resources.charmanderEnemy;
-
-            args.Add(new Pokemon("Bulbasaur", new PictureBox(), 10, Systems.Grass,
-                new Skill("Bao la", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
-            args[1].Image.Image = global::PokemonProject.Properties.Resources.Bulbasaur;
-
-            args.Add(new Pokemon("Squirtle", new PictureBox(), 10, Systems.Water,
-                new Skill("Phun nuoc", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
-            args[2].Image.Image = global::PokemonProject.Properties.Resources.squirtleEnemy;
-
-            args.Add(new Pokemon("Pikachu", new PictureBox(), 10, Systems.Thunder,
-                new Skill("Dien 100k vol", 2, new PictureBox()), new Skill("Tan Cong Toc Do", 2, new PictureBox())));
-            args[3].Image.Image = global::PokemonProject.Properties.Resources.pikachuEnemy;
-        }
-
-        private void initStageForms(List<StageForm> args, List<Pokemon> poke)
-        {
-            args.Add(new StageForm(true, null, poke[0]));
-            args.Add(new StageForm(false, null, poke[1]));
-            args.Add(new StageForm(false, null, poke[2]));
-        }
+       
         private void button1_Click(object sender, EventArgs e)
         {
             if (HoTen.Text == null)
                 return;
-
-            bool isFind = false;
-            foreach (var user in users)
-            {
-                if (HoTen.Text == user.Name)
-                {
-                    Player = user;
-                    isFind = true;
-                    break;
-                }
-            }
-
-            if (isFind)
-            {
-                //Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
-                // Mở Lobby Form nếu tìm thấy user đã tồn tại trong danh sách users 
-                LobbyForm lob = new LobbyForm(Player);
-                lob.FormClosed += (s, args) => {
-                    this.Show();
-                    try
-                    {
-                        axWindowsMediaPlayer1.Ctlcontrols.play(); // Phát lại nhạc nền khi trở về từ Lobby
-                    }
-                    catch
-                    {
-                        // Không làm gì nếu không thể phát nhạc
-                    }
-                    lob.Dispose();
-                };
-                this.Hide();
-                lob.Show();
-                SaveData();
-                axWindowsMediaPlayer1.Ctlcontrols.stop();
-                return;
-            }
-
-            initPokemon(Pokemons);
-            initStageForms(Stages, Pokemons);
-            users.Add(new User(HoTen.Text, Stages, Pokemons));
-            Player = users[users.Count - 1];
-            //  Chuyển sang Lobby
-            Console.WriteLine($"player : {Player.Name}, {Stages[0].Unlock}, {Pokemons[0].Name}");
-            LobbyForm lobby = new LobbyForm(Player);
+            Player.Name = HoTen.Text.Trim();
+            LobbyForm lobby = new LobbyForm(Player, Players);
             lobby.FormClosed += (s, args) =>
             {
                 this.Show();
@@ -242,8 +131,9 @@ namespace PokemonProject
             };
             this.Hide();
             lobby.Show();
-            SaveData();
             axWindowsMediaPlayer1.Ctlcontrols.stop();
+
+
         }
 
         private void btnNhac_Click(object sender, EventArgs e)
